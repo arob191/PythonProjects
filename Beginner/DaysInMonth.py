@@ -26,5 +26,3 @@ year = int(input("enter")) # Enter a year
 month = int(input("enter")) # Enter a month
 days = days_in_month(year, month)
 print(days)
-
-is
