@@ -1,5 +1,6 @@
 #Calculator
 
+import os
 
 # Add
 def add(n1, n2):
@@ -27,17 +28,34 @@ operations = {
 
 }
 
-num1 = int(input('What is the first number? \n'))
-num2 = int(input('What is the second number? \n'))
 
+def calculator():
+    num1 = float(input('What is the first number? \n'))
 
-for symbol in operations:
-    print(symbol)
+    for symbol in operations:
+        print(symbol)
 
-operation_symbol = input("Pick an operation from the line above: \n")
+    # While Loop to continue calculations:
 
-calculation_function = operations[operation_symbol]
+    Continue = True
 
-answer = calculation_function(num1, num2)
+    while Continue:
+        
+        operation_symbol = input("Pick an operation \n")
+        new_num = float(input('What is the next number? \n'))
+        calculation_function = operations[operation_symbol]
+        
+        answer = calculation_function(num1, new_num)
+        
+        print(f"{num1} {operation_symbol} {new_num} = {answer}")
 
-print(f"{num1} {operation_symbol} {num2} = {answer}")
+        if input(f"Type 'y' to continue with {answer}, or type 'n' to start a new calculation.:") == "y":
+            num1 = answer
+        else:
+            Continue = False
+            os.system('cls')
+            calculator()
+        
+        os.system('cls')
+
+calculator()
