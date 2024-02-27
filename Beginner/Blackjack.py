@@ -25,10 +25,6 @@ import Blackjack_art
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
-User_deck = []
-
-Computer_deck = []
-
 def add_user_score():
     score = 0
     for num in User_deck:
@@ -41,6 +37,11 @@ def add_cards(num, deck):
         num -= 1
 
 def game():
+
+    User_deck = []
+
+    Computer_deck = []
+
     print(Blackjack_art.logo)
 
     continue_game = True
@@ -65,16 +66,14 @@ def game():
                 else:
                     more_cards = False
                 if add_user_score() == 21:
-                    print(f"Your score is {add_user_score}! You Win!")
+                    print(f"Your score is {add_user_score()}! You Win!")
                     if input("Would you like to play again? Type 'y' or 'n':") == 'y':
                         game()
                 elif add_user_score() > 21:
-                    print(f"Your score is {add_user_score}! You Bust!")
+                    print(f"Your score is {add_user_score()}! You Bust!")
                     if input("Would you like to play again? Type 'y' or 'n':") == 'y':
                         game()
-                print(f"Current score: {add_user_score}")
-        
-
+                print(f"Current score: {add_user_score()}")
                 
     
 game()
