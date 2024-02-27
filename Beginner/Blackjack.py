@@ -25,12 +25,12 @@ import Blackjack_art
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
-continue_game = True
+start_game = True
 
 print(Blackjack_art.logo)
 
 if input("Would you like to play a game of Blackjack? Type 'y' or 'n':") == "n":
-        continue_game = False
+        start_game = False
 
 
 def game():
@@ -44,8 +44,8 @@ def game():
             num -= 1
 
     def change_ace(deck):
-        ace = deck.index(11)
-        deck[ace] = 1
+        deck.remove(11)
+        deck.append(1)
 
     User_deck = []
 
@@ -78,6 +78,9 @@ def game():
                 if input("Would you like to play again? Type 'y' or 'n':") == 'y':
                     os.system('cls')
                     game()
+                else:
+                 continue_game = False
+                 more_cards = False
             print(f"Your cards: {User_deck} \n Current score: {calculate_score(User_deck)}")
         
         add_cards(1, Computer_deck)
@@ -102,10 +105,9 @@ def game():
             if input("Would you like to play again? Type 'y' or 'n':") == 'y':
                     os.system('cls')
                     game()
-
+        
         continue_game = False
 
 
-
-while continue_game:
+while start_game:
     game()
