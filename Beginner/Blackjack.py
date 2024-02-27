@@ -1,4 +1,6 @@
 import os
+import random
+import Blackjack_art
 
 ############### Blackjack Project #####################
 
@@ -21,3 +23,43 @@ import os
 
 ##################### Hints #####################
 
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
+User_deck = []
+
+Computer_deck = []
+
+def add_user_score():
+    score = 0
+    for num in User_deck:
+        score += num
+    return score
+
+def add_cards(num, deck):
+    while num > 0:
+        deck.extend([random.choice(cards)])
+        num -= 1
+
+def game():
+    print(Blackjack_art.logo)
+
+    continue_game = True
+
+    if input("Would you like to play a game of Blackjack? Type 'y' or 'n':") == "n":
+        continue_game = False
+
+    while continue_game:
+        add_cards(2, User_deck)
+        add_cards(1, Computer_deck)
+
+        print(f"Your cards: {User_deck}, current score: {add_user_score()}")
+        print(f"Computer's first card : {Computer_deck}")
+
+        more_cards = True
+            
+        while more_cards:    
+            if input("Type 'y' to get another card, type 'n' to pass:") == 'y':
+                add_cards(1, User_deck)
+                
+    
+game()
