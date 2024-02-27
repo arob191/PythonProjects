@@ -23,8 +23,9 @@ import Blackjack_art
 
 ##################### Hints #####################
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+# cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
+cards = [11, 9, 9]
 
 
 def game():
@@ -36,6 +37,10 @@ def game():
         while num > 0:
             deck.append(random.choice(cards))
             num -= 1
+
+    def change_ace(deck):
+        ace = deck.index(11)
+        deck[ace] = 1
 
     User_deck = []
 
@@ -65,14 +70,19 @@ def game():
                 else:
                     more_cards = False
                 if calculate_score(User_deck) == 21:
-                    print(f"Your score is {calculate_score(User_deck)}! You Win!")
+                    print(f"Your cards: {User_deck} \n Your score is {calculate_score(User_deck)}! You Win!")
                     if input("Would you like to play again? Type 'y' or 'n':") == 'y':
+                        os.system('cls')
                         game()
+                elif calculate_score(User_deck) > 21 and 11 in User_deck:
+                    change_ace(User_deck)
                 elif calculate_score(User_deck) > 21:
-                    print(f"Your score is {calculate_score(User_deck)}! You Bust!")
+                    print(f"Your cards: {User_deck} \n Your score is {calculate_score(User_deck)}! You Bust!")
                     if input("Would you like to play again? Type 'y' or 'n':") == 'y':
+                        os.system('cls')
                         game()
-                print(f"Current score: {calculate_score(User_deck)}")
+                print(f"Your cards: {User_deck} \n Current score: {calculate_score(User_deck)}")
+
 
         
                 
