@@ -37,7 +37,7 @@ def game():
 
     def add_cards(num, deck):
         while num > 0:
-            deck.extend([random.choice(cards)])
+            deck.append(random.choice(cards))
             num -= 1
 
     User_deck = []
@@ -76,6 +76,8 @@ def game():
                     if input("Would you like to play again? Type 'y' or 'n':") == 'y':
                         game()
                 print(f"Current score: {add_user_score()}")
+
+        
                 
     
 game()
