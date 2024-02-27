@@ -57,9 +57,24 @@ def game():
 
         more_cards = True
             
-        while more_cards:    
-            if input("Type 'y' to get another card, type 'n' to pass:") == 'y':
-                add_cards(1, User_deck)
+        while more_cards: 
+            Under_21 = True
+            while Under_21:   
+                if input("Type 'y' to get another card, type 'n' to pass:") == 'y':
+                    add_cards(1, User_deck)
+                else:
+                    more_cards = False
+                if add_user_score() == 21:
+                    print(f"Your score is {add_user_score}! You Win!")
+                    if input("Would you like to play again? Type 'y' or 'n':") == 'y':
+                        game()
+                elif add_user_score() > 21:
+                    print(f"Your score is {add_user_score}! You Bust!")
+                    if input("Would you like to play again? Type 'y' or 'n':") == 'y':
+                        game()
+                print(f"Current score: {add_user_score}")
+        
+
                 
     
 game()
