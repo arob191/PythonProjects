@@ -23,9 +23,14 @@ import Blackjack_art
 
 ##################### Hints #####################
 
-# cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
-cards = [11, 9, 9]
+continue_game = True
+
+print(Blackjack_art.logo)
+
+if input("Would you like to play a game of Blackjack? Type 'y' or 'n':") == "n":
+        continue_game = False
 
 
 def game():
@@ -46,12 +51,7 @@ def game():
 
     Computer_deck = []
 
-    print(Blackjack_art.logo)
-
     continue_game = True
-
-    if input("Would you like to play a game of Blackjack? Type 'y' or 'n':") == "n":
-        continue_game = False
 
     while continue_game:
         add_cards(2, User_deck)
@@ -62,29 +62,50 @@ def game():
 
         more_cards = True
             
-        while more_cards: 
-            Under_21 = True
-            while Under_21:   
-                if input("Type 'y' to get another card, type 'n' to pass:") == 'y':
-                    add_cards(1, User_deck)
-                else:
-                    more_cards = False
-                if calculate_score(User_deck) == 21:
-                    print(f"Your cards: {User_deck} \n Your score is {calculate_score(User_deck)}! You Win!")
-                    if input("Would you like to play again? Type 'y' or 'n':") == 'y':
-                        os.system('cls')
-                        game()
-                elif calculate_score(User_deck) > 21 and 11 in User_deck:
-                    change_ace(User_deck)
-                elif calculate_score(User_deck) > 21:
-                    print(f"Your cards: {User_deck} \n Your score is {calculate_score(User_deck)}! You Bust!")
-                    if input("Would you like to play again? Type 'y' or 'n':") == 'y':
-                        os.system('cls')
-                        game()
-                print(f"Your cards: {User_deck} \n Current score: {calculate_score(User_deck)}")
+        while more_cards:   
+            if input("Type 'y' to get another card, type 'n' to pass:") == 'y':
+                add_cards(1, User_deck)
+            else:
+                more_cards = False
 
+            if calculate_score(User_deck) == 21:
+                more_cards = False
 
+            elif calculate_score(User_deck) > 21 and 11 in User_deck:
+                change_ace(User_deck)
+            elif calculate_score(User_deck) > 21:
+                print(f"Your cards: {User_deck} \n Your score is {calculate_score(User_deck)}! You Bust!")
+                if input("Would you like to play again? Type 'y' or 'n':") == 'y':
+                    os.system('cls')
+                    game()
+            print(f"Your cards: {User_deck} \n Current score: {calculate_score(User_deck)}")
         
-                
-    
-game()
+        add_cards(1, Computer_deck)
+        
+        while calculate_score(Computer_deck) < calculate_score(User_deck) and calculate_score(Computer_deck) < 21:
+            add_cards(1, Computer_deck)
+            if calculate_score(Computer_deck) > 21 and 11 in Computer_deck:
+                change_ace(Computer_deck)
+        
+        if calculate_score(Computer_deck) > 21:
+            print(f"Dealer Deck: {Computer_deck} Dealer score: {calculate_score(Computer_deck)} \n You Win!")
+            if input("Would you like to play again? Type 'y' or 'n':") == 'y':
+                    os.system('cls')
+                    game()
+        elif calculate_score(Computer_deck) == 21 and calculate_score(User_deck) == 21:
+            print(f"Dealer Deck: {Computer_deck} Dealer score: {calculate_score(Computer_deck)} \n You Tie!")
+            if input("Would you like to play again? Type 'y' or 'n':") == 'y':
+                    os.system('cls')
+                    game()
+        else:
+            print(f"Dealer Deck: {Computer_deck} Dealer score: {calculate_score(Computer_deck)} \n You Lose!")
+            if input("Would you like to play again? Type 'y' or 'n':") == 'y':
+                    os.system('cls')
+                    game()
+
+        continue_game = False
+
+
+
+while continue_game:
+    game()
