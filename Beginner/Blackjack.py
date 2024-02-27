@@ -29,11 +29,8 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
 def game():
 
-    def add_user_score():
-        score = 0
-        for num in User_deck:
-            score += num
-        return score
+    def calculate_score(deck):
+        return sum(deck)
 
     def add_cards(num, deck):
         while num > 0:
@@ -55,7 +52,7 @@ def game():
         add_cards(2, User_deck)
         add_cards(1, Computer_deck)
 
-        print(f"Your cards: {User_deck}, current score: {add_user_score()}")
+        print(f"Your cards: {User_deck}, current score: {calculate_score(User_deck)}")
         print(f"Computer's first card : {Computer_deck}")
 
         more_cards = True
@@ -67,15 +64,15 @@ def game():
                     add_cards(1, User_deck)
                 else:
                     more_cards = False
-                if add_user_score() == 21:
-                    print(f"Your score is {add_user_score()}! You Win!")
+                if calculate_score(User_deck) == 21:
+                    print(f"Your score is {calculate_score(User_deck)}! You Win!")
                     if input("Would you like to play again? Type 'y' or 'n':") == 'y':
                         game()
-                elif add_user_score() > 21:
-                    print(f"Your score is {add_user_score()}! You Bust!")
+                elif calculate_score(User_deck) > 21:
+                    print(f"Your score is {calculate_score(User_deck)}! You Bust!")
                     if input("Would you like to play again? Type 'y' or 'n':") == 'y':
                         game()
-                print(f"Current score: {add_user_score()}")
+                print(f"Current score: {calculate_score(User_deck)}")
 
         
                 
