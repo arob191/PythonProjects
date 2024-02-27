@@ -25,18 +25,20 @@ import Blackjack_art
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
-def add_user_score():
-    score = 0
-    for num in User_deck:
-        score += num
-    return score
 
-def add_cards(num, deck):
-    while num > 0:
-        deck.extend([random.choice(cards)])
-        num -= 1
 
 def game():
+
+    def add_user_score():
+        score = 0
+        for num in User_deck:
+            score += num
+        return score
+
+    def add_cards(num, deck):
+        while num > 0:
+            deck.extend([random.choice(cards)])
+            num -= 1
 
     User_deck = []
 
