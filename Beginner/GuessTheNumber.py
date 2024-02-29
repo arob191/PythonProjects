@@ -44,5 +44,7 @@ def game():
     if input(ask_continue) == "y":
                 game()
                 os.system("cls")
+                
+    return
 
 game()
