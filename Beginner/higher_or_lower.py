@@ -27,7 +27,7 @@ def determine_higher(p1, p2):
 
 def compare_answer(higher, guess, score, lives):
     if higher == guess:
-        return
+        return 1
     else:
         print(f"Game Over! Score: {score}")
         return lives - 1
