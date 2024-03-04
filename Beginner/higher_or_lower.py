@@ -13,11 +13,13 @@ print(higher_or_lower_art.logo)
 def set_person():
     return random.choice(higher_or_lower_data.data)
 
+
 def check_answer(p1, p2, guess):
     if p1['follower_count'] > p2['follower_count']:
         return guess == 'a'
     else:
         return guess == 'b'
+
 
 def replace_person(p2, p1):
     if p1['follower_count'] > p2['follower_count']:
@@ -25,12 +27,12 @@ def replace_person(p2, p1):
     else:
         return p2
 
+
 def game():
 
     score = 0
     continue_game = True
     person2 = set_person()
-    
     
     while continue_game:
 
