@@ -31,24 +31,54 @@ resources = {
 }
 
 
-# TODO: Prompt User "What would you like to Make?"
+def resource_check(coffee):
+    if MENU[coffee]['ingredients']['water'] < resources['water'] and MENU[coffee]['ingredients']['milk'] < resources['milk'] and MENU[coffee]['ingredients']['coffee'] < resources['coffee']:
+        print("sufficient")
+        return True
+    else:
+        print("Not enough resources")
+        make_coffee()
+        return False
 
-coffee = input("What would you like to make? Expressor/Latte/Cappucino: ").lower()
 
-# TODO: Turn coffee machine off by entering the "off" prompt
-# There will be a "return" line at the end of the coffee function
+def process_coins():
+    print("Please Insert Change")
+    num_of_quarter = float(input("Quarters: "))
+    num_of_dimes = float(input("Dimes: "))
+    num_of_nickles = float(input("Nickles: "))
+    num_of_pennies = float(input("Pennies: "))
+    return num_of_quarter * .25 + num_of_dimes * .10 + num_of_nickles * .05 + num_of_pennies * .01
 
-# TODO: Print the report if requested
 
 def report():
     print(resources)
 
-globals()[coffee]()
 
-# TODO: Check Resource Sufficiency
+def make_coffee()
+    sufficient_resources = True
+    # TODO: Prompt User "What would you like to Make?"
 
-# TODO: Process Coins
+    coffee = input("What would you like to make? Expressor/Latte/Cappucino: ").lower()
 
-# TODO: Check if transaction is successful
+    # TODO: Turn coffee machine off by entering the "off" prompt
+    # There will be a "return" line at the end of the coffee function
 
-# TODO: Make Coffee
+    # TODO: Print the report if requested
+
+    if coffee == 'report':
+        globals()[coffee]()
+
+    # TODO: Check Resource Sufficiency when making coffee
+
+    sufficient_resources = resource_check(coffee)
+
+    # TODO: Process Coins
+
+    change = process_coins()
+    print(change)
+
+    # TODO: Check if transaction is successful
+
+    if 
+
+    # TODO: Make Coffee
