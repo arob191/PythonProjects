@@ -31,14 +31,9 @@ resources = {
 }
 
 
-def report():
-    print(resources)
-
-
 def resource_check(coffee):
     if MENU[coffee]['ingredients']['water'] < resources['water'] and MENU[coffee]['ingredients']['milk'] < resources['milk'] and MENU[coffee]['ingredients']['coffee'] < resources['coffee']:
         print("sufficient")
-        return True
     else:
         print("Not enough resources")
         machine_on()
@@ -78,7 +73,7 @@ def machine_on():
     coffee = input("What would you like to make? Expressor/Latte/Cappucino: ").lower()
 
     if coffee == 'report':
-        globals()[coffee]()
+        print(resources)
         machine_on()
     elif coffee == 'off':
         return
