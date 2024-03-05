@@ -31,14 +31,17 @@ resources = {
 }
 
 
+def report():
+    print(resources)
+
+
 def resource_check(coffee):
     if MENU[coffee]['ingredients']['water'] < resources['water'] and MENU[coffee]['ingredients']['milk'] < resources['milk'] and MENU[coffee]['ingredients']['coffee'] < resources['coffee']:
         print("sufficient")
         return True
     else:
         print("Not enough resources")
-        make_coffee()
-        return False
+        machine_on()
 
 
 def process_coins():
@@ -47,38 +50,47 @@ def process_coins():
     num_of_dimes = float(input("Dimes: "))
     num_of_nickles = float(input("Nickles: "))
     num_of_pennies = float(input("Pennies: "))
+    print(f"total = ${num_of_quarter * .25 + num_of_dimes * .10 + num_of_nickles * .05 + num_of_pennies * .01}")
     return num_of_quarter * .25 + num_of_dimes * .10 + num_of_nickles * .05 + num_of_pennies * .01
 
 
-def report():
-    print(resources)
+def check_transaction(change, coffee):
+    cost = MENU[coffee]['cost']
+    if change >= cost:
+        if change - cost == 0:
+            print("Exact change thank you")
+        else:
+            print(f"Here is your change back: ${change - cost}")
+    else:
+        print(f"Not enough change. Returning: ${change}")
+        machine_on()
 
 
-def make_coffee()
-    sufficient_resources = True
-    # TODO: Prompt User "What would you like to Make?"
+def make_coffee(coffee):
+    resources["milk"] = resources["milk"] - MENU[coffee]['ingredients']['milk']
+    resources["water"] = resources["water"] - MENU[coffee]['ingredients']['water']
+    resources["coffee"] = resources["coffee"] - MENU[coffee]['ingredients']['coffee']
+    print(f"Here is your {coffee}!")
+
+
+def machine_on():
 
     coffee = input("What would you like to make? Expressor/Latte/Cappucino: ").lower()
 
-    # TODO: Turn coffee machine off by entering the "off" prompt
-    # There will be a "return" line at the end of the coffee function
-
-    # TODO: Print the report if requested
-
     if coffee == 'report':
         globals()[coffee]()
+        machine_on()
+    elif coffee == 'off':
+        return
 
-    # TODO: Check Resource Sufficiency when making coffee
-
-    sufficient_resources = resource_check(coffee)
-
-    # TODO: Process Coins
+    resource_check(coffee)
 
     change = process_coins()
-    print(change)
+    
+    check_transaction(change, coffee)
+    
+    make_coffee(coffee)
 
-    # TODO: Check if transaction is successful
+    machine_on()
 
-    if 
-
-    # TODO: Make Coffee
+machine_on()
