@@ -75,7 +75,7 @@ def machine_on():
     if coffee == 'report':
         print(resources)
         machine_on()
-    elif coffee == 'off':
+    if coffee == 'off':
         return
 
     resource_check(coffee)
