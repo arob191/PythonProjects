@@ -30,7 +30,7 @@ resources = {
     "coffee": 100,
 }
 
-
+#Global functions
 def resource_check(coffee):
     if MENU[coffee]['ingredients']['water'] < resources['water'] and MENU[coffee]['ingredients']['milk'] < resources['milk'] and MENU[coffee]['ingredients']['coffee'] < resources['coffee']:
         print("sufficient")
