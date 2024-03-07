@@ -90,4 +90,4 @@ def machine_on():
 
 machine_on()
 
-#my controbutions are not showing up properly in GitHub
+#Changed associated email
