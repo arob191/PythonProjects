@@ -31,22 +31,21 @@ resources = {
 }
 
 #Global functions
-def resource_check(coffee):
-    if MENU[coffee]['ingredients']['water'] < resources['water'] and MENU[coffee]['ingredients']['milk'] < resources['milk'] and MENU[coffee]['ingredients']['coffee'] < resources['coffee']:
-        print("sufficient")
-    else:
-        print("Not enough resources")
-        machine_on()
+def resource_check(coffee_ingredients):
+    for item in coffee_ingredients:
+        if coffee_ingredients[item] >= resources[item]:
+         print(f"Not enough {item}")
+         machine_on() 
+    return
 
 
 def process_coins():
     print("Please Insert Change")
-    num_of_quarter = float(input("Quarters: "))
-    num_of_dimes = float(input("Dimes: "))
-    num_of_nickles = float(input("Nickles: "))
-    num_of_pennies = float(input("Pennies: "))
-    print(f"total = ${num_of_quarter * .25 + num_of_dimes * .10 + num_of_nickles * .05 + num_of_pennies * .01}")
-    return num_of_quarter * .25 + num_of_dimes * .10 + num_of_nickles * .05 + num_of_pennies * .01
+    total = int(input("Quarters: ")) * .25
+    total += int(input("Dimes: ")) * .10
+    total += int(input("Nickels: ")) * .02
+    total += int(input("Pennies: ")) * .01
+    return total
 
 
 def check_transaction(change, coffee):
@@ -62,15 +61,14 @@ def check_transaction(change, coffee):
 
 
 def make_coffee(coffee):
-    resources["milk"] = resources["milk"] - MENU[coffee]['ingredients']['milk']
-    resources["water"] = resources["water"] - MENU[coffee]['ingredients']['water']
-    resources["coffee"] = resources["coffee"] - MENU[coffee]['ingredients']['coffee']
+    for item in MENU[coffee]['ingredients']:
+        resources[item] = resources[item] - MENU[coffee]['ingredients'][item]
     print(f"Here is your {coffee}!")
 
 
 def machine_on():
 
-    coffee = input("What would you like to make? Expressor/Latte/Cappucino: ").lower()
+    coffee = input("What would you like to make? Expresso/Latte/Cappucino: ").lower()
 
     if coffee == 'report':
         print(resources)
@@ -78,7 +76,7 @@ def machine_on():
     if coffee == 'off':
         return
 
-    resource_check(coffee)
+    resource_check(MENU[coffee]['ingredients'])
 
     change = process_coins()
     
