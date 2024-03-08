@@ -89,5 +89,3 @@ def machine_on():
     machine_on()
 
 machine_on()
-
-#Changed associated email
