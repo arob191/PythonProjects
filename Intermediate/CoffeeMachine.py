@@ -68,22 +68,19 @@ def make_coffee(coffee):
 
 def machine_on():
 
-    coffee = input("What would you like to make? Expresso/Latte/Cappucino: ").lower()
+    on = True
+    while on:
+        coffee = input("What would you like to make? Expresso/Latte/Cappucino: ").lower()
+        if coffee == 'report':
+            print(resources)
+        elif coffee == 'off':
+            on = False
+        else:
+            resource_check(MENU[coffee]['ingredients'])
+            change = process_coins()
+            check_transaction(change, coffee)
+            make_coffee(coffee)
+    return
 
-    if coffee == 'report':
-        print(resources)
-        machine_on()
-    if coffee == 'off':
-        return
-
-    resource_check(MENU[coffee]['ingredients'])
-
-    change = process_coins()
-    
-    check_transaction(change, coffee)
-    
-    make_coffee(coffee)
-
-    machine_on()
 
 machine_on()
