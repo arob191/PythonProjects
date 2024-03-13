@@ -15,3 +15,5 @@ more_questions = True
 while more_questions:
     quiz.next_question()
     more_questions = quiz.still_has_questions()
+
+print(f"You have completed the Quiz! \n  Your final score is {quiz.score}/{quiz.question_number}!")
