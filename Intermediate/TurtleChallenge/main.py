@@ -1,19 +1,21 @@
 from turtle import Turtle, Screen
 
-lilly_the_turtle = Turtle()
-lilly_the_turtle.shape("classic")
-lilly_the_turtle.color("Green")
-lilly_the_turtle.forward(100)
-lilly_the_turtle.right(90)
-lilly_the_turtle.forward(100)
-lilly_the_turtle.right(90)
-lilly_the_turtle.forward(100)
-lilly_the_turtle.right(90)
-lilly_the_turtle.forward(100)
+lilly = Turtle()
+lilly.shape("turtle")
+lilly.color("Green")
+
+austin = Turtle()
+austin.shape("turtle")
+austin.color("Red")
 
 
+for i in range(4):
+    lilly.forward(100)
+    lilly.right(90)
 
-
+for i in range(4):
+    austin.forward(100)
+    austin.right(90)
 
 
 
