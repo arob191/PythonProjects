@@ -43,7 +43,7 @@ def repeating_circles(num_of_circles):
         lilly.circle(100)
         lilly.seth(lilly.heading() + angle)
 
-repeating_circles(heading, num_of_circles)
+repeating_circles(num_of_circles)
 
 screen = t.Screen()
 screen.exitonclick()
