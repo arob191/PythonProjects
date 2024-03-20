@@ -8,7 +8,7 @@ painter = turtle.Turtle()
 turtle.colormode(255)
 painter.penup()
 painter.setx(-150)
-painter.sety(50)
+painter.sety(150)
 
 for rgb in colors:
     first_rgb = rgb.rgb
@@ -20,7 +20,7 @@ for rgb in colors:
 
 
 painter.color(random.choice(rgbs))
-painter.dot(50, "blue")
+painter.dot(50)
 
 
 screen = turtle.Screen()
