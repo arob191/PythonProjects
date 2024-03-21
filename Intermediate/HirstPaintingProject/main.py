@@ -35,6 +35,7 @@ def make_row(times):
         painter.setheading(0)
 
 
+
 make_row(10)
 
 
