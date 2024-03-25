@@ -10,6 +10,7 @@ turtles = []
 starting_positions = [(0, 0), (-20, 0), (-40, 0)]
 game_is_on = True
 
+
 for snakes in range(0, 3):
     snake = Turtle(shape="square", )
     snake.color("white")
@@ -28,12 +29,7 @@ while game_is_on:
         new_y = turtles[snake - 1].ycor()
         turtles[snake].goto(new_x, new_y)
 
-
-
-
-
-
-
+    turtles[0].forward(20)
 
 
 
