@@ -10,7 +10,7 @@ import time
 def scrape_page(page_url, retries=3, delay=5):
     scrapingbee_endpoint = 'https://app.scrapingbee.com/api/v1/'
     params = {
-        'api_key': SCRAP_BEE_API,
+        'api_key': SCRAP_BEE_API, # type: ignore
         'url': page_url,
         'render_js': 'false',
     }
