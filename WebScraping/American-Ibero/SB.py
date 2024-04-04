@@ -5,15 +5,14 @@ import csv
 import os
 from bs4 import BeautifulSoup
 import time
-# redacted
 
 # Function to scrape a single page and return the table rows
 def scrape_page(page_url, retries=3, delay=5):
     scrapingbee_endpoint = 'https://app.scrapingbee.com/api/v1/'
     params = {
-        'api_key': redacted,
+        'api_key': SCRAP_BEE_API,
         'url': page_url,
-        'render_js': 'false',  # Set to 'true' if the table is loaded with JavaScript
+        'render_js': 'false',
     }
     
     for attempt in range(retries):
@@ -29,7 +28,7 @@ def scrape_page(page_url, retries=3, delay=5):
                 print('Table not found. Please check the ID and ensure the table exists.')
                 return None
         else:
-            print(f'Failed to retrieve the webpage, attempt {attempt + 1} of {retries}')
+            print(f'Failed to retrieve the webpage, attempt {attempt + 1} of {retries}. Status Code: {response.status_code}')
             time.sleep(delay)  # Wait before retrying
     
     print('All attempts failed. Please check your internet connection or the website status.')
@@ -51,8 +50,8 @@ def save_to_csv(data, filename, headers):
 if __name__ == '__main__':
     base_url = 'https://pares.mcu.es/MovimientosMigratorios/buscadorRaw.form?d-3602157-p='
     objects_per_page = 25
-    page_number = 491  # Start from page 1
-    csv_filename = 'scraped_data.csv'  # Define the CSV filename
+    page_number = 1  # Start from page 1
+    csv_filename = 'AB_scraped_data.csv'  # Define the CSV filename
     # Define your headers here based on the table structure
     headers = ['Header1', 'Header2', 'Header3', ...]
     
