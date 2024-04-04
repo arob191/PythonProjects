@@ -4,40 +4,36 @@ from scrapingbee import ScrapingBeeClient
 import csv
 import os
 from bs4 import BeautifulSoup
-# 'F2XZ1PAL0AWHY16ALCKL94RZ8A74O8IF5EEQM1962VHDOE5XTLXU5S1EFG686HVSH2A4OHEBAF6XX575'
+import time
+# redacted
 
 # Function to scrape a single page and return the table rows
-def scrape_page(page_url):
-    # ScrapingBee API endpoint
+def scrape_page(page_url, retries=3, delay=5):
     scrapingbee_endpoint = 'https://app.scrapingbee.com/api/v1/'
-    
-    # Parameters for ScrapingBee API
     params = {
-        'api_key': 'F2XZ1PAL0AWHY16ALCKL94RZ8A74O8IF5EEQM1962VHDOE5XTLXU5S1EFG686HVSH2A4OHEBAF6XX575',
+        'api_key': redacted,
         'url': page_url,
-        'render_js': 'false',
+        'render_js': 'false',  # Set to 'true' if the table is loaded with JavaScript
     }
     
-    # Send a GET request to ScrapingBee API
-    response = requests.get(scrapingbee_endpoint, params=params)
-    
-    # Check if the request was successful
-    if response.status_code == 200:
-        # Parse the HTML content
-        soup = BeautifulSoup(response.content, 'html.parser')
-        
-        # Find the table you're interested in scraping
-        # You'll need to inspect the HTML structure to find the correct table or class name
-        table = soup.find('table', {'id': 'coleccion'})
-        if table:
-            # Extract the text from each table data <td> tag
-            return [[td.text.strip() for td in row.find_all('td')] for row in table.find_all('tr', {'class': ['odd', 'even']})]
+    for attempt in range(retries):
+        response = requests.get(scrapingbee_endpoint, params=params)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Find the table by ID 'coleccion'
+            table = soup.find('table', {'id': 'coleccion'})
+            if table:
+                # Extract the text from each table data <td> tag
+                return [[td.text.strip() for td in row.find_all('td')] for row in table.find_all('tr', {'class': ['odd', 'even']})]
+            else:
+                print('Table not found. Please check the ID and ensure the table exists.')
+                return None
         else:
-            print('Table not found. Please check the ID and ensure the table exists.')
-            return None
-    else:
-        print(f'Failed to retrieve the webpage. Status Code: {response.status_code}')
-        return None
+            print(f'Failed to retrieve the webpage, attempt {attempt + 1} of {retries}')
+            time.sleep(delay)  # Wait before retrying
+    
+    print('All attempts failed. Please check your internet connection or the website status.')
+    return None
 
 # Function to save data to CSV
 def save_to_csv(data, filename, headers):
