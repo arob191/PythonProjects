@@ -5,12 +5,13 @@ import csv
 import os
 from bs4 import BeautifulSoup
 import time
+from api import SCRAP_BEE_API
 
 # Function to scrape a single page and return the table rows
 def scrape_page(page_url, retries=3, delay=5):
     scrapingbee_endpoint = 'https://app.scrapingbee.com/api/v1/'
     params = {
-        'api_key': SCRAP_BEE_API, # type: ignore
+        'api_key': SCRAP_BEE_API,
         'url': page_url,
         'render_js': 'false',
     }
