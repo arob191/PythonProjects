@@ -1,6 +1,4 @@
-
 import requests
-from scrapingbee import ScrapingBeeClient
 import csv
 import os
 from bs4 import BeautifulSoup
