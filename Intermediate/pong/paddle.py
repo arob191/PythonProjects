@@ -1,15 +1,13 @@
 from turtle import Turtle
-STARTING_POSITION = [(380, 20), (380, 0), (380, -20)]
 
 
 class Paddle(Turtle):
     def __init__(self):
         super().__init__()
-        self = Turtle("square")
+        self.shape("square")
         self.color("white")
         self.penup()
         self.goto(350, 0)
-        self.speed(5)
         self.shapesize(5, 1)
 
     def go_up(self):
