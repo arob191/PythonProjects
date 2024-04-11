@@ -4,6 +4,7 @@ import time
 from food import Food
 from scoreboard import Scoreboard
 
+#Screen settings
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
@@ -11,7 +12,7 @@ screen.title("My Snake Game")
 screen.tracer(0)
 game_is_on = True
 
-#
+#Objects
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
