@@ -34,6 +34,11 @@ while game_on:
     time.sleep(0.1)
     ball.move()
 
+    #Detect Collision with Paddle
+
+    #Detect Collision with Wall
+
+    #Detect When Player Scores
 
 
 
