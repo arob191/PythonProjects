@@ -38,8 +38,6 @@ while game_on:
 
     #Detect Collision with Wall
 
-    #Detect When Player Scores
-
 
 
 
