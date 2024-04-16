@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 #Screen Initialization
@@ -19,6 +20,7 @@ RIGHT_PADDLE = (350, 0)
 rpaddle = Paddle(RIGHT_PADDLE)
 lpaddle = Paddle(LEFT_PADDLE)
 ball = Ball()
+scoreboard = Scoreboard()
 
 #Right and Left Paddle Controls:
 screen.listen()
@@ -33,11 +35,15 @@ while game_on:
     screen.update()
     time.sleep(0.1)
     ball.move()
+    scoreboard.update_score()
 
     #Detect Collision with Paddle
 
     #Detect Collision with Wall
-
+    
+    #Detect if Player Scores
+    if ball.xcor() > 390 or ball.xcor() < -390:
+        pass
 
 
 
