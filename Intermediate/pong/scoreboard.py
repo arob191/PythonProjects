@@ -6,28 +6,21 @@ FONT = ("Courier", 12, "normal")
 class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
-        self.right_board()
-        self.left_board()
-    
-    def left_board(self):
         self.score = 0
         self.color("white")
         self.penup()
         self.goto(x=-25, y=275)
         self.hideturtle()
         self.update_score()
+    
+    def left_board(self):
+        pass
 
     def right_board(self):
-        self.score = 0
-        self.color("white")
-        self.penup()
-        self.goto(x=25, y=275)
-        self.hideturtle()
-        self.update_score()
+        pass
 
     def update_score(self):
-        self.left_board.write(f"{self.score}", align=ALIGNMENT, font=FONT)
-        self.right_board.write(f"{self.score}", align=ALIGNMENT, font=FONT)
+        self.write(f"{self.score}", align=ALIGNMENT, font=FONT)
 
     def scored(self, side):
         if side == "left":

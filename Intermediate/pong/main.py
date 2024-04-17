@@ -32,7 +32,7 @@ screen.onkey(lpaddle.go_down, "s")
 
 #Main code
 while game_on:
-    screen.update()
+    scoreboard.update_score()
     time.sleep(0.1)
     ball.move()
     scoreboard.update_score()
