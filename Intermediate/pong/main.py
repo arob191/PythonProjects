@@ -20,7 +20,8 @@ RIGHT_PADDLE = (350, 0)
 rpaddle = Paddle(RIGHT_PADDLE)
 lpaddle = Paddle(LEFT_PADDLE)
 ball = Ball()
-scoreboard = Scoreboard()
+l_scoreboard = Scoreboard("left")
+r_scoreboard = Scoreboard("right")
 
 #Right and Left Paddle Controls:
 screen.listen()
@@ -32,18 +33,18 @@ screen.onkey(lpaddle.go_down, "s")
 
 #Main code
 while game_on:
-    scoreboard.update_score()
+    screen.update()
     time.sleep(0.1)
     ball.move()
-    scoreboard.update_score()
+    l_scoreboard.update_score()
+    r_scoreboard.update_score()
 
     #Detect Collision with Paddle
 
+
     #Detect Collision with Wall
-    
-    #Detect if Player Scores
-    if ball.xcor() > 390 or ball.xcor() < -390:
-        pass
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce()
 
 
 

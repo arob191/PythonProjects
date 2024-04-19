@@ -1,15 +1,21 @@
 from turtle import Turtle
 ALIGNMENT = "center"
 FONT = ("Courier", 12, "normal")
+L_COR = (-25, 275)
+R_COR = (25, 275)
 
 #Need TO CHANGE THIS. This should be only one turtle and it two objects should be made on the main script.
 class Scoreboard(Turtle):
-    def __init__(self):
+    def __init__(self, side):
         super().__init__()
+        if side == "left":
+            cor = L_COR
+        if side == "right":
+            cor = R_COR
         self.score = 0
         self.color("white")
         self.penup()
-        self.goto(x=-25, y=275)
+        self.goto(cor)
         self.hideturtle()
         self.update_score()
     
