@@ -43,7 +43,7 @@ while game_on:
     
     #Detect if Player Scores
     if ball.xcor() > 390 or ball.xcor() < -390:
-        pass
+        
 
 
 
