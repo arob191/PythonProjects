@@ -3,6 +3,7 @@ from paddle import Paddle
 from ball import Ball
 from scoreboard import Scoreboard
 import time
+WINNING_SCORE = 1
 
 #Screen Initialization
 screen = Screen()
@@ -40,12 +41,28 @@ while game_on:
     r_scoreboard.update_score()
 
     #Detect Collision with Paddle
-
+    if ball.xcor() < -320 and ball.distance(lpaddle) < 50 or ball.xcor() > 320 and ball.distance(rpaddle) < 50:
+        ball.bounce("horizontal")
 
     #Detect Collision with Wall
     if ball.ycor() > 280 or ball.ycor() < -280:
-        ball.bounce()
+        ball.bounce("vertical")
 
+    #Detect is paddle misses ball
+    if ball.xcor() > 400 or ball.xcor() < -400:
+        if ball.xcor() > 400:
+            l_scoreboard.scored()
+            if l_scoreboard.score == WINNING_SCORE:
+               l_scoreboard.gameover("LEFT") 
+               r_scoreboard.clear()
+               game_on = False
+        if ball.xcor() < -400:
+            r_scoreboard.scored()
+            if r_scoreboard():
+                r_scoreboard.gameover("RIGHT")
+                l_scoreboard.clear()
+                game_on = False
+        ball.set()
 
 
 

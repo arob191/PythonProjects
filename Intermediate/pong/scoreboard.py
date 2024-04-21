@@ -18,27 +18,16 @@ class Scoreboard(Turtle):
         self.goto(cor)
         self.hideturtle()
         self.update_score()
-    
-    def left_board(self):
-        pass
-
-    def right_board(self):
-        pass
 
     def update_score(self):
         self.write(f"{self.score}", align=ALIGNMENT, font=FONT)
 
-    def scored(self, side):
-        if side == "left":
-            self.left_board.clear()
-            self.left_board.score += 1
-            self.left_board.update_score()
+    def scored(self):
+        self.clear()
+        self.score += 1
+        self.update_score()
         
-        if side == "right":
-            self.right_board.clear()
-            self.right_board.score += 1
-            self.right_board.update_score()
-
-    def gameover(self):
+    def gameover(self, side):
         self.goto(x=0, y=0)
-        self.write(f"GAME OVER", align=ALIGNMENT, font=FONT)
+        self.clear()
+        self.write(f"GAME OVER {side} PLAYER WINS", align=ALIGNMENT, font=FONT)
