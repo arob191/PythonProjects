@@ -21,8 +21,15 @@ class Ball(Turtle):
     def bounce(self, bounce):
         if bounce == "vertical":
             self.y_move *= -1
+            
         if bounce == "horizontal":
             self.x_move *=-1
+            if self.x_move == 0:
+                self.x_move -= 3
+                self.y_move -= 3
+            else:
+                self.x_move += 3
+                self.y_move += 3
 
     def set(self):
         self.goto(0, 0)
