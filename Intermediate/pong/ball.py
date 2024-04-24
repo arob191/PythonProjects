@@ -12,6 +12,7 @@ class Ball(Turtle):
         self.setheading(45)
         self.x_move = 10
         self.y_move = 10
+        self.move_speed = 0.1
 
     def move(self):
         new_y = self.ycor() + self.y_move
@@ -20,16 +21,10 @@ class Ball(Turtle):
     
     def bounce(self, bounce):
         if bounce == "vertical":
-            self.y_move *= -1
-            
+            self.y_move *= -1 
         if bounce == "horizontal":
             self.x_move *=-1
-            if self.x_move == 0:
-                self.x_move -= 3
-                self.y_move -= 3
-            else:
-                self.x_move += 3
-                self.y_move += 3
+            self.move_speed *= 0.8
 
     def set(self):
         self.goto(0, 0)
