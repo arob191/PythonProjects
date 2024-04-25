@@ -56,6 +56,7 @@ while game_on:
                l_scoreboard.gameover("LEFT") 
                r_scoreboard.clear()
                game_on = False
+               
         if ball.xcor() < -400:
             r_scoreboard.scored()
             if r_scoreboard.score == WINNING_SCORE:
