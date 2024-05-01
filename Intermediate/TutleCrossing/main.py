@@ -19,5 +19,10 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
 
+    #check if turtle collides with car
+
+    #check if turtle reaches finish line
+    #add score
+
 
 screen.exitonclick()

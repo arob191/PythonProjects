@@ -19,3 +19,7 @@ class Player(Turtle):
     def set(self):
         self.goto(STARTING_POSITION)
 
+    def goal(self):
+        if self.ycor() == FINISH_LINE_Y:
+            self.set()
+
