@@ -31,12 +31,11 @@ while game_is_on:
     #check if turtle reaches finish line
     if player.ycor() > 280:
         print("Next Level")
-        player.reset()
-
-    #add score
-    if player.ycor() > 300:
-        scoreboard.scored()
         player.set()
+        scoreboard.scored()
+        car_manager.increase_speed()
+        car_manager.reset()
+
 
 
 screen.exitonclick()

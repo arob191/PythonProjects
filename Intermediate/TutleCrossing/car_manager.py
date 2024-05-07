@@ -30,4 +30,8 @@ class CarManager():
     
     def increase_speed(self):
         self.move_distance += MOVE_INCREMENT
+    
+    def reset(self):
+        for cars in self.all_cars:
+            cars.reset()
 
