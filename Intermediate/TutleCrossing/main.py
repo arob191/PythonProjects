@@ -26,7 +26,8 @@ while game_is_on:
     #check if turtle collides with car
     for car in car_manager.all_cars:
         if player.distance(car) < 25:
-            print("you lose")
+            game_is_on = False
+            scoreboard.game_over()
 
     #check if turtle reaches finish line
     if player.ycor() > 280:

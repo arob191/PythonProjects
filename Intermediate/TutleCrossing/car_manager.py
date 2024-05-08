@@ -33,5 +33,5 @@ class CarManager():
     
     def reset(self):
         for cars in self.all_cars:
-            cars.reset()
+            cars.goto(x=-350, y=350)
 
