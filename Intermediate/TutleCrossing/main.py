@@ -23,6 +23,7 @@ while game_is_on:
 
     car_manager.generate_car()
     car_manager.move()
+    
     #check if turtle collides with car
     for car in car_manager.all_cars:
         if player.distance(car) < 25:
