@@ -31,7 +31,7 @@ while game_is_on:
             scoreboard.game_over()
 
     #check if turtle reaches finish line
-    if player.ycor() > 280:
+    if player.ycor() > 280: 
         player.set()
         scoreboard.scored()
         car_manager.increase_speed()
