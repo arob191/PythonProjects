@@ -4,7 +4,6 @@ from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
 
-
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
@@ -31,12 +30,10 @@ while game_is_on:
             scoreboard.game_over()
 
     #check if turtle reaches finish line
-    if player.ycor() > 280: 
+    if player.ycor() > 280:
         player.set()
         scoreboard.scored()
         car_manager.increase_speed()
         car_manager.reset()
-
-
 
 screen.exitonclick()
