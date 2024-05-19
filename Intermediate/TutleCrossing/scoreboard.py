@@ -25,4 +25,4 @@ class Scoreboard(Turtle):
     def game_over(self):
         self.clear()
         self.goto(x=0, y=0)
-        self.write(f"You lose. Your score is {self.score}", align=ALIGNMENT, font=FONT)
+        self.write(f"You lose. Your score is: {self.score}", align=ALIGNMENT, font=FONT)
